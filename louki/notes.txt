@@ -1,0 +1,3 @@
+# grid and flex only apply to the first set of chilren of an element
+# order of linked css files do matter , cuz they kinda can override each 
+    other (happens only if they try to have effect on the same propert[y/ies])

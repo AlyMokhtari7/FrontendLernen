@@ -1,0 +1,80 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    height: 30px;
+    background-color: red;
+}
+
+.main-section {
+    position: fixed;
+}
+
+.container {
+    display: flex;
+    gap: 10px;
+}
+
+.part {
+    flex: 1;
+}
+
+.main-content-part {
+    flex: 10;
+}
+
+.sidebar-part {
+    flex-basis: 30px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.explorer-part {
+    flex-basis: 200px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.sidebar-right-part {
+    flex-basis: 200px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.sidebar {
+    background-color: whitesmoke;
+    border: 0.5px solid black;
+    display: flex;
+    padding: 5px;
+    flex-direction: column;
+}
+
+.sidebar span {
+    margin-bottom: 4px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content span{
+    background-color: whitesmoke;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.sidebar-right {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.avatar {
+    background-color: black;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}

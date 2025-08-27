@@ -1,0 +1,192 @@
+
+@media screen and (max-width: 500px) {
+
+    body {
+        margin: auto;
+    }
+
+    .secondary {
+        display: flex;
+        flex-direction: column;
+        grid-column: 1/-1;
+        grid-row: 1/2;
+    }
+
+    .right-side-footer div {
+        display: none;
+    }
+
+    footer {
+        grid-template-rows: 1fr 1fr repeat(2, 70px);
+        padding-bottom: 20px;
+    }
+
+    .get-the-app {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .get-the-app .phoneScreenShot {
+        display: none;
+    }
+
+    .qr-code-out-of-order {
+        display: none;
+    }
+
+    .get-the-app .qr-code {
+        display: block;
+    }
+
+    .get-the-app .text{
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+        margin-top: 20px;
+    }
+
+    .left-side-footer {
+        grid-column: 1/-1;
+        grid-row: 2/3;
+    }
+
+    .badges {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        grid-column: 1/-1;
+        grid-row: 4/-1;
+    }
+
+    .other-links {
+        grid-row: 3/4;
+        grid-column: 1/2;
+        /*min-width: 50px;*/
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-size: smaller;
+        margin-bottom: 10px;
+    }
+
+    .other-links div:first-child a:last-child {
+        display: none;
+    }
+
+    .badges img{
+        width: 10vw;
+        height: 10vw;
+    }
+
+    .very-down-footer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .other-links div:first-child {
+        min-width: 200px;
+    }
+
+    nav ul:first-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        /*padding: 30px;*/
+        /*width: 100vw;*/
+    }
+
+    .transportation-mean-fields div {
+        margin-top: 20px;
+    }
+
+    .transportation-mean-header ul {
+        display: none;
+    }
+
+    .secondary-mean-of-transportation {
+        display: flex;
+    }
+
+    .seperator {
+        display: none;
+    }
+
+    .means-of-transportation-selection {
+        position: relative;
+        top: -30px;
+    }
+
+    .u-offset-position {
+        position: relative;
+        top: -20px;
+    }
+
+    #Alibaba-other-services {
+        margin-top: 80px;
+    }
+
+    #Alibaba-other-services .flex-container {
+        flex-direction: column;
+    }
+
+    #Alibaba-other-services .flex-container span {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    #Alibaba-other-services .flex-container span:nth-child(2) span:nth-child(2) {
+        width: 20px;
+    }
+
+    .img-flex {
+        display: none;
+    }
+
+    nav .nav-left-side ul {
+        display: flex;
+        /*width: 100vw;*/
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    nav {
+        width: 100vw;
+    }
+
+    nav ul {
+        width: 90vw;
+        /*margin-bottom: 5vh;*/
+    }
+
+
+    nav ul:nth-child(2) {
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .means-of-transportation-section {width: 100vw}
+    body {width: 100vw !important;}
+
+    .u-hidden-in-mobile {
+        display: none !important;
+    }
+
+    .u-visible-in-mobile {
+        display: inline-block !important;
+    }
+
+    .burger-menu {
+        display: inline-flex !important;
+    }
+
+    .badges {
+        justify-content: center;
+    }
+
+    .copyright {
+        text-align: center;
+    }
+}

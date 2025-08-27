@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Layout madness</title>
+</head>
+<body>
+    <script>
+        var flex_basis = NaN
+    </script>
+    <div class="controls" >
+        <i class="bi bi-text-wrap" id="text-wrap" onclick="toggleFlexWrap()"></i>
+        <i class="bi bi-align-bottom" onclick="alignFlexEnd()"></i>
+        <i class="bi bi-align-center" onclick="alignCentre()"></i>
+        <i class="bi bi-align-top" onclick="alignBaseline()"></i>
+        <i class="bi bi-align-start" onclick="justifyStart()"></i>
+        <i class="bi bi-align-middle" onclick="justifycentre()"></i>
+        <i class="bi bi-align-end" onclick="justifyEnd()"></i>
+        <div class="control-group">
+            <i class="bi bi-caret-left-fill" onclick="decreaseFlexBasis()"></i>
+            <span onclick="resetFlexBasis()">flex-basis: <span id="basis-value">none</span></span>
+            <i class="bi bi-caret-right-fill" onclick="increaseFlexBasis()"></i>
+        </div>
+    </div>
+    <div class="container" id="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+        <div class="box">7</div>
+        <div class="box">8</div>
+        <div class="box">9</div>
+    </div>
+
+    <script>
+
+        const container = document.getElementById("container")
+
+        function updateFlexBasisValue(value) {
+            const basisSpan = document.getElementById("basis-value");
+            basisSpan.textContent = value;
+            flex_basis = value
+        }
+
+        updateFlexBasisValue("100")
+
+        function toggleFlexWrap() {
+            const currentWrap = window.getComputedStyle(container).flexWrap;
+            container.style.flexWrap = currentWrap === "wrap" ? "nowrap" : "wrap";
+        }
+
+        function alignFlexEnd() {
+            container.style.alignItems = "flex-end";
+        }
+
+        function alignBaseline() {
+            container.style.alignItems = "flex-start";
+        }
+        
+        function alignCentre() {
+            container.style.alignItems = "center";
+        }
+        
+        function justifyEnd() {
+            updateFlexBasisValue("10")
+            const boxes = document.getElementsByClassName('box');
+            for (let i = 0; i < boxes.length; i++) {
+                boxes[i].style.flexBasis = "10px";
+            }
+
+            container.style.justifyContent = "flex-end";
+        }
+
+        function justifycentre() {
+            updateFlexBasisValue("10")
+            const boxes = document.getElementsByClassName('box');
+            for (let i = 0; i < boxes.length; i++) {
+                boxes[i].style.flexBasis = "10px";
+            }
+
+            container.style.justifyContent = "center";
+        }
+        
+        function justifyStart() {
+            updateFlexBasisValue("10")
+            const boxes = document.getElementsByClassName('box');
+            for (let i = 0; i < boxes.length; i++) {
+                boxes[i].style.flexBasis = "10px";
+            }
+
+            container.style.justifyContent = "flex-start";
+        }
+
+        function increaseFlexBasis() {
+            const boxes = document.getElementsByClassName('box');
+            for (let i = 0; i < boxes.length; i++) {
+                boxes[i].style.flexBasis = `${parseInt(flex_basis) + 1}px`;
+            }
+            updateFlexBasisValue(`${parseInt(flex_basis) + 1}`)
+        }
+
+        function decreaseFlexBasis() {
+            const boxes = document.getElementsByClassName('box');
+            for (let i = 0; i < boxes.length; i++) {
+                boxes[i].style.flexBasis = `${parseInt(flex_basis) - 1}px`;
+            }
+            updateFlexBasisValue(`${parseInt(flex_basis) - 1}`)
+        }
+
+        function resetFlexBasis() {
+            const boxes = document.getElementsByClassName('box');
+            for (let i = 0; i < boxes.length; i++) {
+                boxes[i].style.flexBasis = '100%';
+            }
+            updateFlexBasisValue('100')
+        }
+    </script>
+</body>
+</html>

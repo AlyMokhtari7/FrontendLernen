@@ -1,0 +1,118 @@
+<div class="means-of-transportation-section">
+    <img
+            src="[[r.global.paths.images]]flight.png"
+            alt="means of transportation"
+            class="means-of-transportation-image"
+    />
+    <div class="means-of-transportation-selection">
+        <div class="transportation-mean-header">
+            <div class="transportation-mean">
+                <ul>
+                    <li class="selected">
+                        [[r.this.svgs.domestic flight]]
+                        پرواز داخلی
+                    </li>
+                    <li>
+                        [[r.this.svgs.overseas flight]]
+                        پرواز خارجی
+                    </li>
+                    <li>
+                        [[r.this.svgs.trains]]
+                        قطار
+                    </li>
+                    <li>
+                        [[r.this.svgs.buses]]
+                        اتوبوس
+                    </li>
+                    <li>
+                        [[r.this.svgs.tours]]
+                        تور
+                    </li>
+                    <li>
+                        [[r.this.svgs.hotels]]
+                        هتل
+                    </li>
+                    <li>
+                        [[r.this.svgs.houses]]
+                        ویلا و اقامتگاه
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr class="seperator"/>
+        <div class="transportation-mean-fields">
+            <div>
+        <span class="drop-down-container u-visible-in-mobile u-half-screen-width">
+          <span class="drop-down closed-drop-down" onclick="toggleDropDown(this)">
+            <span>پرواز داخلی</span>
+            [[r.global.svgs.down arrow]]
+          </span>
+          <span class="drop-down-content u-absolute">
+            <span>پرواز خارجی</span>
+          </span>
+        </span>
+                <span class="drop-down-container u-visible-in-mobile u-half-screen-width">
+          <span
+                  class="drop-down closed-drop-down"
+                  onclick="toggleDropDown(this)"
+          >
+            <span>یکطرفه</span>
+
+            [[r.global.svgs.down arrow]]
+          </span>
+          <span class="drop-down-content u-absolute">
+            <span>رفت و برگشت</span>
+          </span>
+        </span>
+                <span
+                        class="round-selection-button secondary-mean-of-transportation u-hidden-in-mobile"
+                >
+          <span> پرواز داخلی </span>
+          [[r.global.svgs.down arrow]]
+        </span>
+                <span class="round-selection-button u-hidden-in-mobile">
+          <span> یک طرفه </span>
+          [[r.global.svgs.down arrow]]
+        </span>
+            </div>
+            <form action="">
+                <input
+                        type="text"
+                        name="from"
+                        id="from-city-input"
+                        class="input-field"
+                        placeholder="مبدا (شهر)"
+                />
+                <input
+                        type="text"
+                        name="to"
+                        id="to-city-input"
+                        class="input-field"
+                        placeholder="مقصد (شهر)"
+                />
+                <input
+                        type="text"
+                        class="input-field"
+                        placeholder="تاریخ رفت"
+                        onfocus="this.type='date'"
+                        onblur="if(this.value==''){this.type='text'}"
+                />
+                <input
+                        type="text"
+                        class="input-field"
+                        placeholder="تاریخ برگشت"
+                        onfocus="this.type='date'"
+                        onblur="if(this.value==''){this.type='text'}"
+                />
+                <input
+                        type="number"
+                        name="num-of-passengers"
+                        id=""
+                        class="input-field"
+                        placeholder="مسافران"
+                />
+                <input type="submit" value="جستجو" class="btn-submit"/>
+            </form>
+        </div>
+    </div>
+</div>

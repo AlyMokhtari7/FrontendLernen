@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+:root {
+  --primary-color: #047aed;
+}
+
+* {
+  box-sizing: border-box; /*read more on this*/
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "lato", sans-serif;
+  font-weight: 100;
+  color: #333;
+  line-height: 1.6;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+h1,
+h2 {
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 10px 0;
+}
+
+p {
+  margin: 10px 0;
+}
+
+img {
+  width: 100%;
+}
+
+/* navbar */
+.navbar {
+  background-color: var(--primary-color);
+  color: white;
+  height: 70px;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar a {
+  color: white;
+  padding: 10px;
+  margin: 0 5px;
+}
+
+.navbar a:hover {
+  border-bottom: 2px white solid;
+}
+
+.navbar .flex {
+  /* work only if the .flex was a child of .navbar*/
+  justify-content: space-between;
+}
+
+/* showcase */
+.showcase {
+  height: 400px;
+  background-color: var(--primary-color);
+  color: white;
+  position: relative;
+}
+
+.showcase .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: unset;
+  gap: 20px;
+}
+
+.showcase h1 {
+  font-size: 40px;
+}
+
+.showcase p {
+  margin: 20px 0;
+}
+
+/* .showcase .grid {
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  overflow: visible;
+} */
+
+.showcase-text {
+  animation: slideInFromLeft 1s ease-in;
+  flex: 1;
+}
+
+.showcase-form {
+  position: relative;
+  top: 60px;
+  height: 350px;
+  flex-basis: 400px;
+  flex-shrink: 250px;
+  padding: 40px;
+  z-index: 100;
+  /* justify-self: flex-end; */
+  animation: slideInFromRight 1s ease-in;
+}
+
+.showcase-form .form-control {
+  margin: 30px 0;
+}
+
+.showcase-form input[type="text"],
+.showcase-form input[type="email"] {
+  border: 0;
+  border-bottom: 1px solid #b4bece;
+  width: 100%;
+  padding: 3px;
+  font-size: 16px;
+}
+
+.showcase-form input:focus {
+  outline: none;
+}
+
+.showcase::before {
+  /* content: none; this just doesnt work */
+  content: "";
+  position: absolute;
+  height: 100px;
+  bottom: -70px;
+  right: 0;
+  left: 0;
+  background-color: white;
+  -webkit-transform: skewY(-3deg);
+  -moz-transform: skewY(-3deg);
+  -ms-transform: skewY(-3deg);
+  transform: skewY(-3deg);
+}
+
+/* STATS */
+.stats {
+  padding-top: 100px;
+  animation: slideInFromBottom 1s ease-in;
+}
+
+.stats-heading {
+  max-width: 500px;
+  margin: auto;
+}
+
+.stats .grid h3 {
+  font-size: 35px;
+}
+
+.stats .grid p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Cli */
+
+.cli .grid {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.cli .grid > *:first-child {
+  /* whatever is the first child */
+  grid-column: 1 / span 2; /*its a wierd syntax to me :/ */
+  grid-row: 1 / span 2;
+}
+
+/* CLOUD */
+
+.cloud .grid {
+  grid-template-columns: 4fr 3fr;
+  background-color: var(--primary-color);
+}
+
+/* languages */
+/* .languages .card {
+  text-align: center;
+  margin: 18px 10px 40px;
+  transition: transform 0.2s ease-in;
+} */
+
+.languages .card h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.languages .card:hover {
+  transform: translateY(-15px);
+}
+
+.languages .card {
+  text-align: center;
+  margin: 18px 10px 40px;
+  transition: transform 0.2s ease-in;
+  /*why the transition does not apply*/
+  /*fixed:: turns out i have not set any unit for the duration */
+}
+
+.languages .flex {
+  flex-wrap: wrap;
+}
+
+.footer .social a {
+  margin: 0 10px;
+}
+
+/* Features Page */
+.features-head img {
+  width: 200px;
+  justify-self: flex-end;
+}
+
+.features-sub-head img {
+  width: 300px;
+  justify-self: flex-end;
+}
+
+.features-main .card > i{
+  margin-right: 20px;
+}
+
+.features-main .grid {
+  padding: 30px;
+}
+
+.features-main .card {
+  margin: 0;
+}
+
+.features-main .flex {
+  justify-content: flex-start;
+}
+
+.features-main .grid > *:first-child {
+  grid-column: 1 / span 3;
+  /* to span an element acros use  grid-column and not grid-template-columns*/
+}
+
+.features-main .grid > *:nth-child(2) {
+  grid-column: 1 / span 2;
+  /* to span an element acros use  grid-column and not grid-template-columns*/
+}
+
+
+/* Docs */
+
+.docs-head img {
+  width: 200px;
+  justify-self: flex-end;
+}
+
+.docs-main .grid {
+  grid-template-columns: repeat(3,1fr);
+}
+
+.docs-main .grid > *:first-child {
+  grid-column: 1;
+  align-self: baseline;
+}
+
+.docs-main .main-list-item{
+  font-size: larger;
+  padding-top: 20px;
+}
+
+.sub-list{
+  font-size: small;
+  border-bottom: 0.2px solid #3333331f;
+}
+
+.highlighted{
+  color: var(--primary-color);
+}
+
+/* .docs-main .grid > *:nth-child(2) {
+  grid-column: span 2;
+}
+
+.docs-main .nav-card {
+  background-color: whitesmoke;
+} */
+
+/* Docs */
+.docs-main h3 {
+  margin: 20px 0;
+}
+
+.docs-main .grid {
+  grid-template-columns: 1fr 2fr;
+  align-items: flex-start;
+}
+
+.docs-main li {
+  font-size: 17px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px #ccc solid;
+}
+
+.docs-main a:hover {
+  font-weight: bold;
+}
+
+.code, pre {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+/* animations */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(+100%);
+  }
+  
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(+100%);
+  }
+  
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* media Queries */
+
+/* For tablets */
+@media (max-width: 768px) {
+  .grid,
+  .showcase .grid,
+  .stats .grid,
+  .cli .grid,
+  .cloud .grid, .features-main .grid,
+  .docs-main .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .showcase {
+    height: auto;
+  }
+
+
+  .showcase-text {
+    text-align: center;
+    margin-top: 40px;
+    flex-basis: 700px;
+    animation: slideInFromTop 1s ease-in;
+  }
+
+  .showcase-form {
+    justify-self: center;
+    margin: auto;
+    animation: slideInFromBottom 1s ease-in;
+  }
+
+  .cli .grid > *:first-child {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .features-head, .features-sub-head, .docs-head {
+    text-align: center;
+  }
+
+  .features-head img, .features-sub-head img, .docs-head img {
+    justify-self: center;
+  }
+
+  .features-main .grid > *:first-child, .features-main .grid > *:nth-child(2){
+    grid-column: 1;
+  }
+}
+
+/* For phones */
+@media (max-width: 500px) {
+  .navbar {
+    height: 110px;
+  }
+
+  .navbar .flex {
+    flex-direction: column;
+  }
+
+  .navbar ul {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  /* showcase */
+}

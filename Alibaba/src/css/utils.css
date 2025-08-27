@@ -1,0 +1,48 @@
+
+.u-border-none {
+    border: none !important;
+}
+
+.u-full-width {
+    width: 100vw;
+    right: 0;
+}
+
+
+.u-absolute {
+    position: absolute;
+}
+
+.u-relative {
+    position: relative;
+}
+
+.u-fixed {
+    position: fixed;
+}
+
+.u-visible-in-mobile {
+    display: none;
+}
+
+.u-half-screen-width {
+    width: 50vw;
+}
+
+.u-start-justification {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-right: 50px;
+    gap: 10px;
+    align-items: center;
+}
+
+.u-offset-position {
+    position: relative;
+    top: -104px;
+}
+
+.u-bold-text {
+    font-weight: bolder;
+    color: black;
+}

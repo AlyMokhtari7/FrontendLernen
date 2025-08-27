@@ -1,0 +1,113 @@
+
+@media screen and (max-width: 1200px) {
+    footer {
+        grid-template-rows: 2fr 2fr repeat(1, 1fr);
+    }
+
+    .right-side-footer {
+        justify-content: space-between;
+        grid-column: 1/-1;
+        grid-row: 1/2;
+    }
+    .left-side-footer {
+        padding-left: 10px;
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+    .badges {
+        grid-column: 2/-1;
+        flex-wrap: wrap;
+        padding: 10px;
+        grid-row: 2/3;
+        display: grid;
+        grid-template-columns: repeat(2, 75px);
+        grid-template-rows: repeat(2, 75px);
+        justify-content: center;
+        align-items: center;
+    }
+    .other-links {
+        grid-row: 3/-1;
+        grid-column: 1/-1;
+    }
+    .socials {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    nav {
+        justify-content: center !important;
+        /*flex-wrap: wrap;*/
+    }
+
+
+    nav ul:nth-child(2) {
+        margin: 0 !important;
+    }
+    .nav-left-side {
+        flex: 1;
+        flex-shrink: 0;
+        justify-content: center;
+    }
+
+    .nav-left-side li {
+        flex-shrink: 0;
+    }
+
+    .logo {
+        margin: 10px !important;
+        align-self: center;
+    }
+
+    .logo img {
+        width: 90px;
+    }
+}
+
+@media screen and (max-width: 970px) {
+
+
+    .transportation-mean-fields div {
+        margin-top: 20px;
+    }
+
+    .transportation-mean-header ul {
+        display: none;
+    }
+
+    .secondary-mean-of-transportation {
+        display: flex;
+    }
+
+    .seperator {
+        display: none;
+    }
+
+    .means-of-transportation-section {width: 100vw}
+    body {width: 100vw !important;}
+
+    .u-hidden-in-mobile {
+        display: none !important;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    .u-visible-in-mobile {
+        display: inline-block !important;
+    }
+
+    nav ul:first-child {
+        padding-right: 0 !important;
+    }
+
+    nav ul {
+        gap: 0px !important;
+        padding: 0 !important;
+    }
+
+    nav ul li {
+        gap: 1px;
+    }
+}
