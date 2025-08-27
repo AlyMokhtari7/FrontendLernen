@@ -1,0 +1,195 @@
+<!doctype html>
+<html dir="rtl" lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <script src="../neuCrudUtils.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment-jalaali@0.9.2/build/moment-jalaali.js"></script>
+
+    <style>
+      input[type="range"] {
+        -webkit-appearance: none; /* For Chrome, Safari, Edge */
+        appearance: none;
+        width: 100%; /* Adjust as needed */
+        background: transparent; /* Remove default background */
+      }
+
+      input[type="range"]::-webkit-slider-runnable-track {
+        height: 15px; /* Set track height */
+        background: #ccc; /* Track color */
+        border-radius: 0; /* Rounded corners */
+      }
+
+      input[type="range"]::-moz-range-track {
+        height: 15px;
+        background: #ccc;
+        border-radius: 0;
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Remove default thumb appearance */
+        height: 15px; /* Thumb size */
+        width: 15px;
+        background-color: #000; /* Thumb color */
+        border-radius: 0; /* Make it round */
+        cursor: grab; /* Change cursor on hover */
+      }
+
+      input[type="range"]::-moz-range-thumb {
+        height: 15px;
+        width: 15px;
+        background-color: #000;
+        border-radius: 0;
+        cursor: grab;
+      }
+
+      .card:hover {
+        outline-width: 0 10px 0 0;
+      }
+
+      ::file-selector-button{
+        display: inline-block;
+        border: #000 2px solid;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        padding: 4px 10px;
+      }
+    </style>
+  </head>
+  <body class="flex">
+    <aside class="h-dvh w-1/6 bg-white p-4 text-black">
+      <div class="mb-4">
+        <button onclick="open_add_product_dialog()"
+          class="w-full h-12 border-2 border-b-8 border-solid border-black bg-white px-4 py-2 text-gray-950 transition-[border] duration-100 ease-in-out hover:border-b-4 focus:border-b-2"
+        >
+          افزودن محصول
+        </button>
+      </div>
+      <form class="" action="" role="search" id="search_form">
+        <input
+          type="text"
+          name="searchBox"
+          id="searchBox"
+          class="w-full border-2 border-solid border-gray-300 bg-white px-4 py-2 text-gray-950 transition-[border] duration-100 ease-in-out focus:border-black focus:outline-none"
+          placeholder="جستجو..."
+        />
+      </form>
+      <form action="" id="filter_form">
+        <div class="mt-8">حداقل قیمت</div>
+        <input
+          type="range"
+          name="minPriceRange"
+          id="minPriceRange"
+          class="range-slider w-full focus:outline-none"
+          min="0"
+          max="50"
+          step="10"
+          value="0"
+          oninput="this.nextElementSibling.value = this.value + '000'"
+        />
+        <output>0</output>
+        <label for="minPriceRange">
+          <div class="flex justify-between">
+            <span>0</span>
+            <span>50000</span>
+          </div>
+        </label>
+        <div class="mt-4">حداکثر قیمت</div>
+        <input
+          type="range"
+          name="maxPriceRange"
+          id="maxPriceRange"
+          class="range-slider w-full focus:outline-none"
+          min="0"
+          max="50"
+          step="10"
+          value="50"
+          oninput="this.nextElementSibling.value = this.value + '000'"
+        />
+        <output>50000</output>
+        <label for="maxPriceRange">
+          <div class="flex justify-between">
+            <span>0</span>
+            <span>50000</span>
+          </div>
+        </label>
+        <div id="cat_filter" class="flex flex-col mt-4">
+          <!-- <script>
+            get_product_categories().then((categories) => {
+              for (let category of categories) {
+                document.getElementById('cat_filter').innerHTML += `<span class="flex justify-end gap-2"><label for="${category.name}">${category.name}</label><input type="checkbox" id="cat_${category.id}" name="${category.name}" value="${category.name}"></span>`;
+              }
+            });
+          </script> -->
+        </div>
+        <div class="flex gap-2">
+        <input type="button" value="اعمال فیلتر" onclick="filterServerSide()" class="mt-4 w-full h-12 border-2 border-b-8 border-solid border-black bg-white px-4 py-2 text-gray-950 transition-[border] duration-100 ease-in-out hover:border-b-4 focus:border-b-2">
+        <button onclick="display_all_products()" class="mt-4 w-full h-12 border-2 border-b-8 border-solid border-black bg-white px-4 py-2 text-gray-950 transition-[border] duration-100 ease-in-out hover:border-b-4 focus:border-b-2">بازنشانی</button>
+        </div>
+      </form>
+    </aside>
+    <div class="h-dvh w-5/6 overflow-hidden">
+      <section class="flex h-dvh w-full flex-wrap gap-6 overflow-y-scroll bg-gray-100 p-4"></section>
+      
+    </div>
+    <div id="notifs" class="flex flex-col absolute w-96 left-2 bottom-2">
+    <div id="product_notification" class="hidden items-center shadow-2xl gap-7 align-middle h-12 border-b-4 border-white border-solid bg-black  overflow-hidden">
+        
+    </div>
+    <div id="refresh_banner" class="hidden items-center shadow-2xl gap-7 align-middle h-12 border-b-4 border-white border-solid bg-black overflow-hidden">
+        <i onclick="refresh_page_after_long_time()" class="bi bi-arrow-clockwise text-white border-l-1 border-solid border-white text-2xl py-1 px-4 hover:opacity-70 transition-opacity duration-150 ease-linear"></i>
+        <span class="text-white">زمان زیادی از آخرین تازه‌سازی میگذرد ...</span>
+    </div>
+    </div>
+    <div id="add_product_dialog" class=" hidden bg-white text-black border-r-2 pr-4 pt-4 border-solid border-black h-dvh w-2/6 absolute z-50 right-1/6 top-0">
+      <div class="w-5/6 mx-auto flex gap-4 justify-end">
+        <button
+          class="w-20 border-2 border-b-8 border-solid border-black bg-white mb-4 px-4 h-12 py-2 text-gray-950 transition-[border] duration-100 ease-in-out hover:border-b-4 focus:border-b-2"
+          onclick="add_product_by_form()" 
+        >ذخیره</button>
+        <button
+          class="w-20 border-2 border-b-8 border-solid border-black bg-white mb-4 px-4 h-12 py-2 text-gray-950 transition-[border] duration-100 ease-in-out hover:border-b-4 focus:border-b-2"
+          onclick="close_add_product_dialog()" 
+        >بیخیال</button>
+      </div>
+      <form action="" class="w-5/6 mx-auto" name="createProduct_form" id="createProduct_form">
+        <label for="add_product_title"></label>
+        <input type="text" name="add_product_title" id="add_product_title" class="w-full mb-4 border-2 border-solid border-gray-300 bg-white text-gray-950 px-4 py-2 transition-[border] duration-100 ease-in-out focus:border-black focus:outline-none" placeholder="عنوان محصول">
+        <label for="add_product_price"></label>
+        <input type="number" value="0" name="add_product_price" id="add_product_price" class="w-full mb-4 border-2 border-solid border-gray-300  bg-white text-gray-950 px-4 py-2  transition-[border] duration-100 ease-in-out focus:border-black focus:outline-none">
+        <label for="add_product_description"></label>
+        <input type="text" name="add_product_description" id="add_product_description" class="w-full mb-4 border-2 border-solid border-gray-300 bg-white text-gray-950 px-4 py-2  transition-[border] duration-100 ease-in-out focus:border-black focus:outline-none">
+        <label for="upload_images">فایل خود را آپلود کنید </label>
+        <input type="file" name="upload_images" id="upload_images">
+        <label for="add_product_category"></label>
+        <select name="add_product_category" id="add_product_category" class="w-full border-2 mb-4 border-solid border-gray-300 bg-white text-gray-950 px-4 py-2  transition-[border] duration-100 ease-in-out focus:border-black focus:outline-none">
+          <!-- <script>
+            get_product_categories().then((categories) => {
+              for (let category of categories) {
+                document.getElementById('add_product_category').innerHTML += `<option value="${category.id}">${category.name}</option>`;
+              }
+            });
+          </script> -->
+        </select>
+      </form>
+    </div>
+    <div id="product_details" class=" hidden bg-white text-black border-r-2 pr-4 pt-4 border-solid border-black h-dvh w-2/6 absolute z-50 right-1/6 top-0">
+      <div class="w-5/6 mx-auto flex gap-4 justify-end">
+        <button
+          class="w-20 border-2 border-b-8 border-solid border-black bg-white mb-4 px-4 h-12 py-2 text-gray-950 transition-[border] duration-100 ease-in-out hover:border-b-4 focus:border-b-2"
+          onclick="remove_product()" 
+        >حذف</button>
+        <button
+          class="w-20 border-2 border-b-8 border-solid border-black bg-white mb-4 px-4 h-12 py-2 text-gray-950 transition-[border] duration-100 ease-in-out hover:border-b-4 focus:border-b-2"
+          onclick="close_product_details_dialog()" 
+        >بیخیال</button>
+      </div>
+      <div id="product_details_expo"></div>
+    </div>
+  </body>
+  <script>
+    // set_up_Carousel();
+  </script>
+</html>
