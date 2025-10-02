@@ -1,0 +1,6 @@
+[submodule "platziMarktRepo"]
+	path = platziMarktRepo
+	url = https://github.com/AlyMokhtari7/platziMarkt
+[submodule "neuPlatziMarkt"]
+	path = neuPlatziMarkt
+	url = https://github.com/AlyMokhtari7/NeuPlatzi
